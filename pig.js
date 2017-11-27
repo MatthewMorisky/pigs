@@ -1,5 +1,5 @@
 function Pig() {
-	this.pos = createVector(width/2,height/2);
+	this.pos = createVector(0,0);
 	this.radius = 20;
 	this.heading = 0;
 	this.velocity = createVector(0,0);
@@ -93,7 +93,7 @@ function Pig() {
 	this.show = function() {
 		push();
 		fill(244, 66, 146);
-		translate(this.pos.x, this.pos.y);
+		translate(this.pos.x + width/2, this.pos.y + height/2);
 		rotate(this.heading + PI/2);
 		triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
 		if (this.hasWeapon) {

@@ -10,8 +10,10 @@ function setup() {
 
 function draw() {
 	background(60, 163, 92);
+
 	bush.exe();
 	pig.exe();
+	
 
 
 		

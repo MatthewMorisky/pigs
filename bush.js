@@ -35,6 +35,7 @@ function Bush() {
 	}
 
 	this.show = function() {
+		translate(-pig.pos.x,-pig.pos.y);
 		fill(4, 109, 1);
 			
 		ellipse(this.x, this.y, this.radius*2, this.radius);
