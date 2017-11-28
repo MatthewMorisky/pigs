@@ -7,7 +7,7 @@ function Pig() {
 	this.weaponCount = 0;
 	this.weaponAngle = 0;
 	this.isAttacking = false;
-	this.isRecovering = false;
+	
 	
 
 
@@ -15,12 +15,20 @@ function Pig() {
 	this.exe = function() {
 		this.update();
 		this.show();
-		this.move();
-		if (this.isAttacking) this.attack();
-		
+	
+		if (this.isAttacking) {
+			this.attack();
+			if (this.hasWeapon) {
+				this.move();
+			}
+		}
+		else {
+			this.move();
+			}
 		
 	}
 	this.move = function() {
+
 		if (keyIsDown(UP_ARROW)) {
 			this.thrust();
 		}
@@ -50,18 +58,15 @@ function Pig() {
 			this.weaponAngle = -PI/7 * Math.sin(this.weaponCount);
 
 		}
-		else if(!this.isRecovering) {
+		else {
+			if (this.weaponCount >= 2*PI) {
+				this.isAttacking = false;
+				this.weaponCount = 0;
+			}
 			var force = p5.Vector.fromAngle(this.heading);
-			force.mult(20);
+			force.mult(.9*Math.sin(this.weaponCount));
 			this.velocity.add(force);
-			this.isRecovering = true;
-		}
-		else if(this.isRecovering) {
-			var force = p5.Vector.fromAngle(this.heading);
-			force.mult(-20);
-			this.velocity.add(force);
-			this.isRecovering = false;
-			this.isAttacking = false;
+			this.weaponCount = this.weaponCount + .3;
 		}
 	}
 

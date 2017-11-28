@@ -4,7 +4,7 @@ function setup() {
 	createCanvas(500, 500); 	
 	pig = new Pig();
 	bush = new Bush();
-	//frameRate(1);
+	//frameRate();
 
 }
 
@@ -13,7 +13,7 @@ function draw() {
 
 	bush.exe();
 	pig.exe();
-	
+
 
 
 		
