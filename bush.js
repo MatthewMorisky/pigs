@@ -1,6 +1,6 @@
-function Bush() {
-	this.x = 250;
-	this.y = 400;
+function Bush(x, y) {
+	this.x = x;
+	this.y = y;
 	this.radius = 60;
 	this.fruitCount = 0;
 	this.maxFruit = 10;
@@ -35,10 +35,11 @@ function Bush() {
 	}
 
 	this.show = function() {
-		translate(-pig.pos.x,-pig.pos.y);
+		
 		fill(4, 109, 1);
 			
 		ellipse(this.x, this.y, this.radius*2, this.radius);
+		
 	}
 
 

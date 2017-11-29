@@ -3,7 +3,8 @@ function setup() {
 
 	createCanvas(500, 500); 	
 	pig = new Pig();
-	bush = new Bush();
+	bush = new Bush(250, 400);
+	bush1 = new Bush(400, 250);
 	//frameRate();
 
 }
@@ -11,18 +12,23 @@ function setup() {
 function draw() {
 	background(60, 163, 92);
 
-	bush.exe();
+	push();
+	translate(-pig.pos.x,-pig.pos.y);
+		bush.exe();
+		bush1.exe();
+	pop();
+
+
 	pig.exe();
-
-
+	
 
 		
 }
 function keyPressed() {
-	if (keyCode === 32) { //Spacebar
+	if (keyCode === 88) { // x
 		pig.isAttacking = true;
 		}
-	if (keyCode === 49) {
+	if (keyCode === 49) { // 1
 		pig.hasWeapon = !pig.hasWeapon;
 	}
 }

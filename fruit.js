@@ -34,6 +34,7 @@ function Fruit(bushX,bushY, bushR) {
 	*/
 
 	this.show = function() {
+		
 		fill(229, 18, 18);
 
 		ellipse(this.x, this.y, this.radius, this.radius);
