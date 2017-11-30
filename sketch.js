@@ -5,6 +5,8 @@ function setup() {
 	pig = new Pig();
 	bush = new Bush(250, 400);
 	bush1 = new Bush(400, 250);
+	wolf = new Wolf(100,100);
+	wolf1 = new Wolf(400,30);
 	//frameRate();
 
 }
@@ -16,10 +18,13 @@ function draw() {
 	translate(-pig.pos.x,-pig.pos.y);
 		bush.exe();
 		bush1.exe();
+		wolf.exe();
+		wolf1.exe();
 	pop();
 
 
 	pig.exe();
+	
 	
 
 		

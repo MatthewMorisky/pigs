@@ -1,8 +1,9 @@
 function Pig() {
 	this.pos = createVector(0,0);
+	this.velocity = createVector(0,0);
 	this.radius = 20;
 	this.heading = 0;
-	this.velocity = createVector(0,0);
+	
 	this.hasWeapon = false;
 	this.weaponCount = 0;
 	this.weaponAngle = 0;
@@ -72,7 +73,6 @@ function Pig() {
 
 	this.update = function() {
 		
-
 		this.pos.add(this.velocity);
 		this.velocity.mult(.90);
 	}
