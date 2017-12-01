@@ -98,7 +98,7 @@ function Pig() {
 	}
 	this.show = function() {
 		push();
-		fill(244, 66, 146);
+		noFill();
 		translate(width/2, height/2);
 		rotate(this.heading + PI/2);
 		image(this.img, 0, 0);
