@@ -101,7 +101,7 @@ function Pig() {
 		noFill();
 		translate(width/2, height/2);
 		rotate(this.heading + PI/2);
-		image(this.img, 0, 0);
+		image(this.img, this.radius, this.radius);
 		triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
 		if (this.hasWeapon) {
 			fill(178, 110, 16);
