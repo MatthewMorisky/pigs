@@ -6,6 +6,7 @@ function Wolf(x, y) {
 	this.turnSpeed = PI/64;
 	this.targetHeading = 0;
 	this.pursuitRadius = 150;
+	this.img = loadImage("img/wolf.png");
 	
 	this.deltaX = (pig.pos.x + (width/2)) - this.pos.x;
 	this.deltaY = (this.pos.y - (height/2)) - pig.pos.y;
@@ -43,10 +44,11 @@ function Wolf(x, y) {
 
 	this.draw = function() {
 		push();
-		fill(120);
+		noFill();
 		
 		translate(this.pos.x, this.pos.y);
 		rotate(this.heading + PI/2);
+		image(this.img, -this.radius, -this.radius);
 		triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
 		pop();
 	}
