@@ -1,7 +1,7 @@
 
 function setup() {
 
-	createCanvas(500, 500); 	
+	createCanvas(1000, 500); 	
 	pig = new Pig();
 	this.bushes = [
 	  [400, 250],
@@ -33,7 +33,7 @@ function draw() {
 
 	push();
 	translate(-pig.pos.x,-pig.pos.y);
-	
+
 		for (i = 0; i < this.bushes.length; i++) {
 					this.bushes[i].exe();
 				}

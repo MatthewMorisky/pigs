@@ -6,6 +6,7 @@ function Bush(x, y) {
 	this.maxFruit = 3;
 	this.fruitDelay = 0;
 	this.fruits = [];
+	this.img = loadImage("img/bush.png");
 	
 
 	this.exe = function() {
@@ -30,8 +31,8 @@ function Bush(x, y) {
 
 	this.show = function() {
 		
-		fill(4, 109, 1);
-			
+		noFill();
+		image(this.img, -this.radius*2, -this.radius);
 		ellipse(this.x, this.y, this.radius*2, this.radius);
 		
 	}
