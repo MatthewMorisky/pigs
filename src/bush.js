@@ -32,7 +32,7 @@ function Bush(x, y) {
 	this.show = function() {
 		
 		noFill();
-		image(this.img, this.x -this.radius*2, this.y -this.radius);
+		image(this.img, this.x -this.radius, this.y -this.radius/2);
 		ellipse(this.x, this.y, this.radius*2, this.radius);
 		
 	}
