@@ -18,6 +18,7 @@ function Wolf(x, y) {
 	this.exe = function() {
 		this.update();
 		this.draw();
+		this.headingReset()
 		
 		if (this.distFromPig < this.pursuitRadius) {
 			this.findTarget();
@@ -44,13 +45,22 @@ function Wolf(x, y) {
 
 	this.draw = function() {
 		push();
-		noFill();
-		
+		//noFill();
+		//fill(55);
 		translate(this.pos.x, this.pos.y);
 		rotate(this.heading + PI/2);
 		image(this.img, -this.radius, -this.radius);
-		triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
+		//triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
 		pop();
+	}
+
+	this.headingReset = function() {
+		if (this.heading < 0) {
+			this.heading = 2*PI;
+		}
+		if (this.heading > 2*PI)  {
+			this.heading = 0;
+		}
 	}
 
 	this.findTarget = function() {
@@ -73,25 +83,40 @@ function Wolf(x, y) {
 	}
 
 	this.pursuit = function() {
-		if (this.targetHeading > this.heading) {
-			this.heading += this.turnSpeed * 4;
+		
+
+		if (this.targetHeading - this.heading > PI) {
+			this.turnRight();
+		}
+		else if (this.heading - this.targetHeading > PI) {
+			this.turnLeft();
+		}
+		else if (this.targetHeading > this.heading) {
+			this.turnLeft();
 		}
 		else {
-			this.heading -= this.turnSpeed * 4;
+			this.turnRight();
 		}
-
+		
 	}
 
 	this.patrol = function() {
 		if (this.patrolTime > this.patrolCycle) {
 			this.heading += this.turnSpeed;
 			this.patrolTime++;
+			
 			if (this.patrolTime > this.patrolCycle + 64) this.patrolTime = 0;
 			
 		}
 		else this.patrolTime++;
 	
 
+	}
+	this.turnRight = function() {
+		this.heading -= this.turnSpeed;
+	}
+	this.turnLeft = function() {
+		this.heading += this.turnSpeed;
 	}
 
 }

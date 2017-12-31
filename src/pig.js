@@ -30,24 +30,40 @@ function Pig() {
 		
 	}
 	this.move = function() {
+		if (keyIsDown(DOWN_ARROW) && keyIsDown(LEFT_ARROW)) {
+			this.heading = 3*(PI/4);
+			this.thrust();
+		}
+		else if (keyIsDown(DOWN_ARROW) && keyIsDown(RIGHT_ARROW)) {
+			this.heading = PI/4;
+			this.thrust();
+		}
+		else if (keyIsDown(UP_ARROW) && keyIsDown(LEFT_ARROW)) {
+			this.heading = 5*(PI/4);
+			this.thrust();
+		}
+		else if (keyIsDown(UP_ARROW) && keyIsDown(RIGHT_ARROW)) {
+			this.heading = -(PI/4);
+			this.thrust();
+		}
 
-		if (keyIsDown(UP_ARROW)) {
+		else if (keyIsDown(UP_ARROW)) {
+			this.heading = 3*(PI/2);
 			this.thrust();
 		}
 		else if (keyIsDown(DOWN_ARROW)) {
-			this.backThrust();
+			this.heading = (PI/2);
+			this.thrust();
+		}
+		else if (keyIsDown(RIGHT_ARROW)) {
+			this.heading = (0);
+			this.thrust();
 		}
 
-		if ( (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW) ) && !( (keyIsDown(LEFT_ARROW) && keyIsDown(RIGHT_ARROW) ) ) ) {
-			if (keyIsDown(LEFT_ARROW)) {
-				this.turn(-.07);
-			}
-			else if (keyIsDown(RIGHT_ARROW)) {
-				this.turn(.07);
-			}
-		}
-		else {
-			this.turn(0);
+		else if (keyIsDown(LEFT_ARROW)) {
+			this.heading = (PI);
+			this.thrust();
+		
 		}
 	}
 	this.attack = function() {
@@ -78,9 +94,6 @@ function Pig() {
 		this.velocity.mult(.90);
 	}
 
-	this.turn = function(rotation) {
-		this.heading += rotation;
-	}
 
 	this.thrust = function() {
 
@@ -89,20 +102,16 @@ function Pig() {
 		this.velocity.add(force);
 		
 	}
-	this.backThrust = function() {
 
-		var force = p5.Vector.fromAngle(this.heading);
-		force.mult(-0.13);
-		this.velocity.add(force);
-		
-	}
+
 	this.show = function() {
 		push();
-		noFill();
+		//noFill();
+		//fill(100,100,17)
 		translate(width/2, height/2);
 		rotate(this.heading + PI/2);
 		image(this.img, -this.radius, -this.radius);
-		triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
+		//triangle(-this.radius, this.radius, this.radius, this.radius, 0, -this.radius);
 		if (this.hasWeapon) {
 			fill(178, 110, 16);
 			rotate(this.weaponAngle);
