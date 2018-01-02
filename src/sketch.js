@@ -1,11 +1,12 @@
 
 function setup() {
 
-	this.isPaused = false;
+	
 
 	createCanvas(1000, 500); 	
 	pig = new Pig();
 	pauseMenu = new PauseMenu();
+	expBar = new ExpBar();
 	this.bushes = [
 	  [400, 250],
 	  [250,200],
@@ -32,7 +33,7 @@ function setup() {
 }
 
 function draw() {
-	if (!this.isPaused) {
+	if (!pauseMenu.isPaused) {
 		background(60, 163, 92);
 		push();
 		translate(-pig.pos.x,-pig.pos.y);
@@ -48,6 +49,7 @@ function draw() {
 
 
 		pig.exe();
+		expBar.exe();
 	}
 	else{
 		background(55)
@@ -59,8 +61,8 @@ function draw() {
 }
 function keyPressed() {
 	if (keyCode === 88) { // x
-		if (this.isPaused) {
-			pauseMenu.choiceMade = true;
+		if (pauseMenu.isPaused) {
+			pauseMenu.choiceMade();
 		}
 		else {
 		pig.isAttacking = true;
@@ -70,12 +72,17 @@ function keyPressed() {
 		pig.hasWeapon = !pig.hasWeapon;
 	}
 	if (keyCode === 32) { // SpaceBar
-		this.isPaused = !this.isPaused;
+		if (!pauseMenu.isPaused) {
+			pauseMenu.isPaused = !pauseMenu.isPaused;
+		}
+		else {
+			pauseMenu.choiceMade();
+		}
 	}
-	if ((this.isPaused) && (keyCode === UP_ARROW)) {
+	if ((pauseMenu.isPaused) && (keyCode === UP_ARROW)) {
 		 pauseMenu.goUp();
 	}
-	if ((this.isPaused) && (keyCode === DOWN_ARROW)) {
+	if ((pauseMenu.isPaused) && (keyCode === DOWN_ARROW)) {
 		pauseMenu.goDown();
 	}
 }

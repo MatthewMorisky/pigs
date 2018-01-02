@@ -5,7 +5,7 @@ function Wolf(x, y) {
 	this.heading = PI/2;
 	this.turnSpeed = PI/64;
 	this.targetHeading = 0;
-	this.pursuitRadius = 150;
+	this.pursuitRadius = 200;
 	this.img = loadImage("img/wolf.png");
 	
 	this.deltaX = (pig.pos.x + (width/2)) - this.pos.x;
@@ -36,7 +36,7 @@ function Wolf(x, y) {
 		this.distFromPig = Math.sqrt(this.deltaX * this.deltaX + this.deltaY * this.deltaY);
 
 		var force = p5.Vector.fromAngle(this.heading);
-			force.mult(.22);
+			force.mult(.17);
 			this.velocity.add(force);
 		
 		this.pos.add(this.velocity);

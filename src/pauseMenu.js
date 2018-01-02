@@ -1,5 +1,5 @@
 function PauseMenu() {
-	this.choiceMade = false;
+	this.isPaused = false;
 	this.invSelected = true;
 	this.skillSelected = false;
 	this.quitSelected = false;
@@ -12,6 +12,7 @@ function PauseMenu() {
 		
 	}
 	this.draw = function() {
+		push()
 		fill(244,182,66);
 		rect(width/4,10,width/2,height-20);
 		fill(0);
@@ -38,7 +39,7 @@ function PauseMenu() {
 		}
 		text('Quit',width/2,height/2 + 40);
 		this.resetText();
-
+		pop();
 	}
 
 
@@ -81,4 +82,15 @@ function PauseMenu() {
 			this.quitSelected = false;
 		}
 	}
+	this.choiceMade = function() {
+		if (this.invSelected) {
+			//console.log("inv");
+		}
+		else if (this.skillSelected) {
+			//console.log("skill");
+		}
+		else if (this.quitSelected) {
+			this.isPaused = false;
+		}
+	}              
 }

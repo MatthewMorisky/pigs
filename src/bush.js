@@ -13,7 +13,7 @@ function Bush(x, y) {
 		this.update();
 		this.show();
 		for (var i = 0, len = this.fruits.length; i < len; i++) {
-			this.fruits[i].show();
+			this.fruits[i].exe();
 		}
 
 
