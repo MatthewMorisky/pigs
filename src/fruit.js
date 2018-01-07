@@ -54,6 +54,9 @@ function Fruit(bushX,bushY, bushR, fruitNum) {
 		this.hideCounter = 0;
 		this.x = random(bushX - bushR, bushX + bushR);
 		this.y = random(bushY - bushR/2, bushY + bushR/2);
-		expBar.exp++;
+		if (expBar.isLevelingUp) {
+			expBar.expHold+= 100;
+		}
+		else expBar.exp += 100;
 	}
 }

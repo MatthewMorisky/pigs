@@ -26,6 +26,15 @@ function setup() {
 	for (i = 0; i < this.wolves.length; i++) {
 		this.wolves[i] = new Wolf(this.wolves[i][0], this.wolves[i][1])
 	}
+	this.barriers = [
+	  [100,100,true,81,15,"img/fence2.png"],
+	  [400,30,false,81,15,"img/fence1.png"]
+
+	];
+
+	for (i = 0; i < this.barriers.length; i++) {
+		this.barriers[i] = new Barrier(this.barriers[i][0], this.barriers[i][1],this.barriers[i][2], this.barriers[i][3], this.barriers[i][4], this.barriers[i][5])
+	}
 
 	
 	//frameRate();
@@ -44,6 +53,9 @@ function draw() {
 
 			for (i = 0; i < this.wolves.length; i++) {
 				this.wolves[i].exe();
+			}
+			for (i = 0; i < this.barriers.length; i++) {
+				this.barriers[i].exe();
 			}
 		pop();
 

@@ -31,7 +31,7 @@ function PauseMenu() {
 		if (this.skillSelected) {
 			this.hoverText();
 		}
-		text('Skills',width/2,height/2);
+		text('Skills(' + expBar.skillPoints + ')',width/2,height/2);
 		this.resetText();
 
 		if (this.quitSelected) {
