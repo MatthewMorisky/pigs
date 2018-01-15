@@ -111,6 +111,9 @@ function PauseMenu() {
 
 		this.isOpen = true;
 		skillsMenu.isOpen = false;
-
+		skillsMenu.selectionX = 0;
+		skillsMenu.selectionY = 0;
+		skillsMenu.backSelected = false;
+		skillsMenu.quitSelected = false;
 	}    
 }

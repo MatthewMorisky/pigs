@@ -76,8 +76,14 @@ function draw() {
 function keyPressed() {
 	if (keyCode === 88) { // x
 		if (pauseMenu.isPaused) {
-			pauseMenu.choiceMade();
+			if (pauseMenu.isOpen) {
+				pauseMenu.choiceMade();
+			}
+			else if (skillsMenu.isOpen) {
+				skillsMenu.choiceMade();
+			}
 		}
+
 		else {
 		pig.isAttacking = true;
 		}
@@ -89,31 +95,36 @@ function keyPressed() {
 		if (!pauseMenu.isPaused) {
 			pauseMenu.isPaused = !pauseMenu.isPaused;
 		}
-		else {
+		else if (pauseMenu.isOpen) {
 			pauseMenu.choiceMade();
 		}
-	}
-	if (keyCode === 27) { //Escape key
-		pauseMenu.resetMenu();
-	}
-	if ((pauseMenu.isOpen) && (keyCode === UP_ARROW)) {
-		 pauseMenu.goUp();
-	}
-	if ((pauseMenu.isOpen) && (keyCode === DOWN_ARROW)) {
-		pauseMenu.goDown();
-	}
-	if ((skillsMenu.isOpen) && (keyCode === UP_ARROW)) {
-		 skillsMenu.goUp();
+		else if (skillsMenu.isOpen) {
+			skillsMenu.choiceMade();
 		}
-	if ((skillsMenu.isOpen) && (keyCode === DOWN_ARROW)) {
-		 skillsMenu.goDown();
+	}
+	if (pauseMenu.isPaused) {
+		if (keyCode === 27) { //Escape key
+			pauseMenu.resetMenu();
 		}
-	if ((skillsMenu.isOpen) && (keyCode === LEFT_ARROW)) {
-		 skillsMenu.goLeft();
+		if ((pauseMenu.isOpen) && (keyCode === UP_ARROW)) {
+			 pauseMenu.goUp();
 		}
-	if ((skillsMenu.isOpen) && (keyCode === RIGHT_ARROW)) {
-		 skillsMenu.goRight();
+		if ((pauseMenu.isOpen) && (keyCode === DOWN_ARROW)) {
+			pauseMenu.goDown();
 		}
+		if ((skillsMenu.isOpen) && (keyCode === UP_ARROW)) {
+			 skillsMenu.goUp();
+		}
+		if ((skillsMenu.isOpen) && (keyCode === DOWN_ARROW)) {
+			 skillsMenu.goDown();
+		}
+		if ((skillsMenu.isOpen) && (keyCode === LEFT_ARROW)) {
+			 skillsMenu.goLeft();
+		}
+		if ((skillsMenu.isOpen) && (keyCode === RIGHT_ARROW)) {
+			 skillsMenu.goRight();
+		}
+	}
 }
 
 function keyReleased() {

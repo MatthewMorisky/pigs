@@ -1,0 +1,16 @@
+Skills
+	Strength
+		Trample: Pig can break a variety of items with his attack
+
+	Charisma
+		Sowieeeeet talker: additional options in dialog
+		Good deals: Items cost less in shops
+
+	Intellect
+		Quick learner: Exp Gain boost
+		Literate: Pig can read signs and other human items
+		Scientific pig: Pig has access to additional sciency dialog
+
+	Agility
+		Light footed: Pig movement speed is faster and now 
+		On your feet: Pig attacks first in combat

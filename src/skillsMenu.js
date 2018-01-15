@@ -26,7 +26,9 @@ function SkillsMenu() {
 					this.skills[i][j].exe();
 				}
 			}
-			this.skills[this.selectionY][this.selectionX].hover();
+			if ((!this.backSelected) &&  (!this.quitSelected)) {
+				this.skills[this.selectionY][this.selectionX].hover();
+			}
 		}
 	}
 
@@ -82,18 +84,29 @@ function SkillsMenu() {
 		pop();
 	}
 	this.goUp = function() {
-		if (this.selectionY > 0) {
+		if (this.backSelected) {
+			this.backSelected = false;
+		}
+		else if (this.quitSelected) {
+			this.backSelected = true;
+			this.quitSelected = false;
+		}
+		else if (this.selectionY > 0) {
 			this.selectionY -= 1;
 		}
 
 	}
 	this.goDown = function() {
-		/*
-		if (this.selectionY == 3) {
+		
+		if ((this.selectionY == 3) && (!this.backSelected) && (!this.quitSelected)) {
 			this.backSelected = true;
 		}
-		*/
-		if (this.selectionY < 3) {
+		else if (this.backSelected) {
+			this.quitSelected = true;
+			this.backSelected = false;
+		}
+
+		else if (this.selectionY < 3) {
 			this.selectionY += 1;
 		}
 		
@@ -109,5 +122,17 @@ function SkillsMenu() {
 			this.selectionX += 1;
 		}
 
+	}
+
+	this.choiceMade = function() {
+		if (this.backSelected) {
+			this.isOpen = false;
+			pauseMenu.isOpen = true;
+			
+		}
+
+		else if (this.quitSelected) {
+			pauseMenu.resetMenu();
+		}
 	}
 }
