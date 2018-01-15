@@ -3,12 +3,15 @@ function PauseMenu() {
 	this.invSelected = true;
 	this.skillSelected = false;
 	this.quitSelected = false;
+	this.isOpen = true;
+	
 
 
 
 	this.exe = function() {
-
-		this.draw();
+		if (this.isOpen) {
+			this.draw();
+		}
 		
 	}
 	this.draw = function() {
@@ -55,6 +58,7 @@ function PauseMenu() {
 		fill(0);
 	}
 	this.goUp = function() {
+
 		if (this.invSelected) {
 			this.quitSelected = true;
 			this.invSelected = false;
@@ -68,7 +72,9 @@ function PauseMenu() {
 			this.quitSelected = false;
 		}
 	}
+
 	this.goDown = function() {
+
 		if (this.invSelected) {
 			this.skillSelected = true;
 			this.invSelected = false;
@@ -82,15 +88,29 @@ function PauseMenu() {
 			this.quitSelected = false;
 		}
 	}
+
 	this.choiceMade = function() {
 		if (this.invSelected) {
 			//console.log("inv");
 		}
 		else if (this.skillSelected) {
-			//console.log("skill");
+			skillsMenu.isOpen = true;
+			this.isOpen = false;
+
 		}
 		else if (this.quitSelected) {
-			this.isPaused = false;
+			this.resetMenu();
 		}
-	}              
+	}
+	this.resetMenu = function() {
+		this.isPaused = false;
+
+		this.invSelected = true;
+		this.skillSelected = false;
+		this.quitSelected = false;
+
+		this.isOpen = true;
+		skillsMenu.isOpen = false;
+
+	}    
 }

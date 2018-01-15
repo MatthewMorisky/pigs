@@ -6,6 +6,7 @@ function setup() {
 	createCanvas(1000, 500); 	
 	pig = new Pig();
 	pauseMenu = new PauseMenu();
+	skillsMenu = new SkillsMenu();
 	expBar = new ExpBar();
 	this.bushes = [
 	  [400, 250],
@@ -66,6 +67,7 @@ function draw() {
 	else{
 		background(55)
 		pauseMenu.exe();
+		skillsMenu.exe();
 	}
 	
 
@@ -91,12 +93,27 @@ function keyPressed() {
 			pauseMenu.choiceMade();
 		}
 	}
-	if ((pauseMenu.isPaused) && (keyCode === UP_ARROW)) {
+	if (keyCode === 27) { //Escape key
+		pauseMenu.resetMenu();
+	}
+	if ((pauseMenu.isOpen) && (keyCode === UP_ARROW)) {
 		 pauseMenu.goUp();
 	}
-	if ((pauseMenu.isPaused) && (keyCode === DOWN_ARROW)) {
+	if ((pauseMenu.isOpen) && (keyCode === DOWN_ARROW)) {
 		pauseMenu.goDown();
 	}
+	if ((skillsMenu.isOpen) && (keyCode === UP_ARROW)) {
+		 skillsMenu.goUp();
+		}
+	if ((skillsMenu.isOpen) && (keyCode === DOWN_ARROW)) {
+		 skillsMenu.goDown();
+		}
+	if ((skillsMenu.isOpen) && (keyCode === LEFT_ARROW)) {
+		 skillsMenu.goLeft();
+		}
+	if ((skillsMenu.isOpen) && (keyCode === RIGHT_ARROW)) {
+		 skillsMenu.goRight();
+		}
 }
 
 function keyReleased() {
